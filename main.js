@@ -49,8 +49,32 @@ customElements.define('lotto-ball', LottoBall);
 
 const generateBtn = document.getElementById('generate-btn');
 const lottoNumbersContainer = document.getElementById('lotto-numbers');
+const themeToggle = document.getElementById('checkbox');
+const clickSound = document.getElementById('click-sound');
+
+const currentTheme = localStorage.getItem('theme');
+
+if (currentTheme) {
+    document.body.classList.add(currentTheme);
+  
+    if (currentTheme === 'dark-mode') {
+        themeToggle.checked = true;
+    }
+}
+
+themeToggle.addEventListener('change', function() {
+    if(this.checked) {
+        document.body.classList.add('dark-mode');
+        localStorage.setItem('theme', 'dark-mode');
+    } else {
+        document.body.classList.remove('dark-mode');
+        localStorage.setItem('theme', 'light-mode');
+    }
+});
+
 
 generateBtn.addEventListener('click', () => {
+    clickSound.play();
     lottoNumbersContainer.innerHTML = '';
     const numbers = new Set();
     while(numbers.size < 6) {

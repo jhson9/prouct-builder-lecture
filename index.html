@@ -8,10 +8,17 @@
 </head>
 <body>
     <div class="container">
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider round"></div>
+            </label>
+        </div>
         <h1>로또 번호 추천</h1>
         <div id="lotto-numbers" class="lotto-numbers"></div>
         <button id="generate-btn">번호 생성</button>
     </div>
+    <audio id="click-sound" src="data:audio/wav;base64,UklGRuy3AABXQVZFZm10IBAAAAABAAEAIlYAACJWAAABAAgAZGF0Yci3AACIhISCgH5+enx+gHx4cm5udHp+fHh0cHJ0enx8enx+fn6GiIyMiIaKio6Wmp6goJycnp6coJ6cnJqanqSoqqigmJKSmJygop6ampycmpaOjIiIhoSChoiGgHx2cG5qaGhiYmRkZmRgXFpUUlJUVlhcVlZYWmBgYFxaWlxiZmpsbGxsampubnBwbmxsbnB0cHBubGpqbGxwcnRwpnB2enyAfoB8fH5+goSEhISCgICEhoyKhoCChIiMjIyKiIaCgoaMioiEhISGjpaanJyYlpSWnqKkoJyYlpiYmJaSkI6MioSKjIyIhIB8en5+fHp2eHp6fn6AfHp8enh8foSEgoJ+foKGiIaAeHR2dn58fHx8fHZ2cnBydnRwcHJ0enx8enp4enZ2dnZ0dnh4fH5+fHp2dHR0enZ0cnZ6eHp6eHh0dnh0dHZ2eHZ0cGxqamZiXFpYWFhaWlhYVlhYVlZaWl5gYGJkZmhoaGxucHJ0eHR2en58fHh0dnZ8foCAgH6ChoSEhISEhoaIjJKWmpiSkpSWmp6enJiampqcnpqYkI6MjIyOjIiGhoiIhoqIiISChISKjo6MiISEhoqOkJKSkpSQjpKYmpqWkJCOkpKUkpKQio6OjI6MhoKAenp2dHJuamhoZGRoamhmZmZkZmhqamhoaGxsbm5qamZoaGpqbm5ubmxuamxsbm50cnR2fHx+foSAfn6CiIqMjpKSkpaeoqCWlJSWlpSanp6alJSSkJCSlpaSkpKWmqCemJKOjI6SlpaYnJqUlJaYlpKQkJCSlpqYkI6OjoyKiIiEgHx+hoaIhoJ8dHBucnR0cHJycHJucGpoZmZoZGZoaG5ubmpsamhkZGRkZGZqbGhmZmhkZGZkYmJkZGZqbG5wcGhoam5yenx6eHZ0dnp6eHh4dnp6fHx6eHRybG5ucnR0cnBudHRycnBwcHZ4enp+fnx8fHZ4fH6EhISGiIiGioqMjoyKiIaIjJSampiWkI6MkI6UlJKQjIqEhoqIgoCAfHp+goCAfnh4dnJ2dHRycHBsbnJwdG5waGhqampsaGRiZmhoamhmaGZsbGxubmxsbm5wcnR0cHBubnJ0eHp2dHZ2eHp8fn5+fnx+goaKioqEhIiOlJiYmJSSkI6OjpCQkJCQjo6SkpKMjIiGiIqMkJCQkI6MioiIhoqKioaIhIaGioiKioqKjIqIiIaEhIKCgICEhISAfHp4eHp6dnR2cHBycnJ0dHJycGpudHR0dHBsbG5ucnJ0cnBwcHZ4eHp4dHBydnp+hIB8eHZ2dnp+fHh2dnR6en5+fHZ0cHBydnRybmxqamZoZmJgXFpaYmZoampoaGhucHJycHBwdnx+goaGiIiMjpSWmpqYlpacnqCinpygoqakoqSkoKCepKaopqKenJaWlJKSkpCKjIyMjo6MiIaIhIiKjpKUkpKSkI6OjIiGgHx6fHp4dnZ0dHJ0dnR0dHJydHZ2eHZ2dHJ0dnh8foCAfn6CgoB8fHx4eHRwdHZ4eHhyamhmaGpsam5ydHZ2eHh2dnJucG5udHx+goB+gH54dnRydHZ4fHx+goSAfn58en58fH6GjpKSlpKQjpKQkpKSkIyOjpCMioaAgHp4dHBycHBubGRgXlpaWFZSUlBQUlRQTkxITEpMTkxMTE5SVlpYWFxiZmhqbnJ2en5+gIB8fenx+"></audio>
     <script src="main.js"></script>
 </body>
 </html>
