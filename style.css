@@ -1,45 +1,69 @@
 :root {
     --background-color: #f0f2f5;
-    --container-background: white;
     --text-color: #333;
-    --gradient-color: #d7d7d7;
+    --container-bg: #fff;
+    --button-bg: #4CAF50;
+    --button-text: white;
+}
+
+[data-theme="dark"] {
+    --background-color: #121212;
+    --text-color: #f0f2f5;
+    --container-bg: #1e1e1e;
+    --button-bg: #BB86FC;
+    --button-text: #000;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
     background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-image: radial-gradient(var(--gradient-color) 1px, transparent 1px);
-    background-size: 16px 16px;
     transition: background-color 0.3s, color 0.3s;
 }
 
-body.dark-mode {
-    --background-color: #1a1a1a;
-    --container-background: #2a2a2a;
-    --text-color: #f0f2f5;
-    --gradient-color: #444;
+.container {
+    background-color: var(--container-bg);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-.container {
-    background-color: var(--container-background);
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 90%;
-    max-width: 500px;
-    position: relative;
+h1 {
+    margin-bottom: 20px;
+}
+
+#clock {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+#restaurant-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.restaurant {
+    background-color: var(--background-color);
+    padding: 15px;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.restaurant h2 {
+    margin-top: 0;
 }
 
 .theme-switch-wrapper {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
 }
 
 .theme-switch {
@@ -50,7 +74,7 @@ body.dark-mode {
 }
 
 .theme-switch input {
-    display:none;
+    display: none;
 }
 
 .slider {
@@ -75,11 +99,11 @@ body.dark-mode {
     width: 26px;
 }
 
-input:checked + .slider {
+input:checked+.slider {
     background-color: #2196F3;
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
     transform: translateX(26px);
 }
 
@@ -89,92 +113,4 @@ input:checked + .slider:before {
 
 .slider.round:before {
     border-radius: 50%;
-}
-
-
-h1 {
-    color: var(--text-color);
-    margin-bottom: 10px;
-    font-size: 2em;
-}
-
-#clock {
-    color: var(--text-color);
-    font-size: 1em;
-    margin-bottom: 20px;
-}
-
-.lotto-numbers {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 40px;
-    flex-wrap: wrap;
-}
-
-.lotto-numbers lotto-ball.spinning div {
-    animation: ball-spin 0.5s linear infinite;
-}
-
-@keyframes ball-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-
-#previous-numbers-container {
-    margin-top: 30px;
-    border-top: 1px solid var(--gradient-color);
-    padding-top: 20px;
-}
-
-#previous-numbers-container h2 {
-    color: var(--text-color);
-    font-size: 1.5em;
-    margin-bottom: 20px;
-}
-
-#previous-numbers {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-}
-
-.previous-set {
-    display: flex;
-    gap: 10px;
-}
-
-.previous-ball {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 0.9em;
-    color: white;
-}
-
-#generate-btn {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 15px 30px;
-    font-size: 1.2em;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s, box-shadow 0.3s;
-    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
-    margin-top: 30px;
-}
-
-#generate-btn:hover {
-    background-color: #45a049;
-    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.5);
 }
