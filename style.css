@@ -15,7 +15,10 @@
 }
 
 body {
-    background-color: var(--background-color);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://peseita.com/wp-content/uploads/2023/11/photo-of-person-holding-a-ramen-bowl.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     color: var(--text-color);
     font-family: Arial, sans-serif;
     display: flex;
