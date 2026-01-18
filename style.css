@@ -94,8 +94,14 @@ input:checked + .slider:before {
 
 h1 {
     color: var(--text-color);
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     font-size: 2em;
+}
+
+#clock {
+    color: var(--text-color);
+    font-size: 1em;
+    margin-bottom: 20px;
 }
 
 .lotto-numbers {

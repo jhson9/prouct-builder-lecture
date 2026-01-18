@@ -1,9 +1,9 @@
 const colorMap = [
-    "#FFB3BA", "#FFDFBA", "#FFFFBA", "#BAFFC9", "#BAE1FF", "#E0BBE4", "#FFB3BA", "#FFDFBA", "#FFFFBA", "#BAFFC9",
-    "#BAE1FF", "#E0BBE4", "#FFB3BA", "#FFDFBA", "#FFFFBA", "#BAFFC9", "#BAE1FF", "#E0BBE4", "#FFB3BA", "#FFDFBA",
-    "#FFFFBA", "#BAFFC9", "#BAE1FF", "#E0BBE4", "#FFB3BA", "#FFDFBA", "#FFFFBA", "#BAFFC9", "#BAE1FF", "#E0BBE4",
-    "#FFB3BA", "#FFDFBA", "#FFFFBA", "#BAFFC9", "#BAE1FF", "#E0BBE4", "#FFB3BA", "#FFDFBA", "#FFFFBA", "#BAFFC9",
-    "#BAE1FF", "#E0BBE4", "#FFB3BA", "#FFDFBA", "#FFFFBA"
+    "#F44336", "#E91E63", "#9C27B0", "#673AB7", "#3F51B5", "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50",
+    "#8BC34A", "#CDDC39", "#FFEB3B", "#FFC107", "#FF9800", "#FF5722", "#795548", "#9E9E9E", "#607D8B", "#F44336",
+    "#E91E63", "#9C27B0", "#673AB7", "#3F51B5", "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50", "#8BC34A",
+    "#CDDC39", "#FFEB3B", "#FFC107", "#FF9800", "#FF5722", "#795548", "#9E9E9E", "#607D8B", "#F44336", "#E91E63",
+    "#9C27B0", "#673AB7", "#3F51B5", "#2196F3", "#00BCD4"
 ];
 
 class LottoBall extends HTMLElement {
@@ -47,7 +47,6 @@ class LottoBall extends HTMLElement {
         return colorMap[parseInt(number, 10) - 1] || '#ccc';
     }
 }
-
 customElements.define('lotto-ball', LottoBall);
 
 const generateBtn = document.getElementById('generate-btn');
@@ -55,8 +54,18 @@ const lottoNumbersContainer = document.getElementById('lotto-numbers');
 const themeToggle = document.getElementById('checkbox');
 const clickSound = document.getElementById('click-sound');
 const previousNumbersContainer = document.getElementById('previous-numbers');
+const clockElement = document.getElementById('clock');
 
 let history = [];
+
+function updateClock() {
+    const now = new Date();
+    const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+    clockElement.textContent = now.toLocaleDateString('ko-KR', options);
+}
+
+updateClock();
+setInterval(updateClock, 1000);
 
 const currentTheme = localStorage.getItem('theme');
 if (currentTheme) {
