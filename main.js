@@ -9,6 +9,7 @@ const restaurants = [
     { name: '착한튀김', location: '화북동', food: '떡볶이', rating: 5 },
     { name: '키에키커피스탠드', location: '화북동', food: '커피', rating: 4.5 },
     { name: '도남돼지', location: '화북동', food: '흑돼지', rating: 4.2 },
+    { name: '키친요디', location: '화북동', food: '돈까스', rating: 4.6 },
     // 조천읍
     { name: '램앤블랙 제주 조천 본점', location: '조천읍', food: '양고기, 양갈비', rating: 4.8 },
     { name: '고집돌우럭 제주함덕점', location: '조천읍', food: '우럭', rating: 4.8 },
@@ -28,6 +29,7 @@ const restaurants = [
     { name: '원신식당', location: '삼양동', food: '갈치국', rating: 4 },
     { name: '제주인짬뽕 삼화점', location: '삼양동', food: '짬뽕, 짜장면, 탕수육', rating: 5 },
     { name: '아임파인 제주', location: '삼양동', food: '크림 짬뽕, 우삼겹 짬뽕, 토마토 짬뽕', rating: 4.4 },
+    { name: '삼형제시골순대', location: '삼양동', food: '국밥', rating: 5.0 },
 ];
 
 function setClock() {
