@@ -31,7 +31,7 @@ class LottoBall extends HTMLElement {
                     100% { transform: scale(1); }
                 }
             </style>
-            <div>${number}</div>
+            <div>${number || '?'}</div>
         `;
     }
 
@@ -51,9 +51,11 @@ const generateBtn = document.getElementById('generate-btn');
 const lottoNumbersContainer = document.getElementById('lotto-numbers');
 const themeToggle = document.getElementById('checkbox');
 const clickSound = document.getElementById('click-sound');
+const previousNumbersContainer = document.getElementById('previous-numbers');
+
+let history = [];
 
 const currentTheme = localStorage.getItem('theme');
-
 if (currentTheme) {
     document.body.classList.add(currentTheme);
   
@@ -74,8 +76,19 @@ themeToggle.addEventListener('change', function() {
 
 
 generateBtn.addEventListener('click', () => {
+    generateBtn.disabled = true;
     clickSound.play();
     lottoNumbersContainer.innerHTML = '';
+    
+    // Create placeholder balls
+    const placeholderBalls = [];
+    for (let i = 0; i < 6; i++) {
+        const lottoBall = document.createElement('lotto-ball');
+        lottoBall.classList.add('spinning');
+        lottoNumbersContainer.appendChild(lottoBall);
+        placeholderBalls.push(lottoBall);
+    }
+
     const numbers = new Set();
     while(numbers.size < 6) {
         const randomNumber = Math.floor(Math.random() * 45) + 1;
@@ -83,10 +96,63 @@ generateBtn.addEventListener('click', () => {
     }
 
     const sortedNumbers = Array.from(numbers).sort((a,b) => a - b);
+    
+    updateHistory(sortedNumbers);
 
-    sortedNumbers.forEach(number => {
-        const lottoBall = document.createElement('lotto-ball');
-        lottoBall.setAttribute('number', number);
-        lottoNumbersContainer.appendChild(lottoBall);
+    let delay = 0;
+    sortedNumbers.forEach((number, index) => {
+        setTimeout(() => {
+            const newBall = document.createElement('lotto-ball');
+            newBall.setAttribute('number', number);
+            lottoNumbersContainer.replaceChild(newBall, placeholderBalls[index]);
+            if (index === 5) {
+                generateBtn.disabled = false;
+            }
+        }, delay);
+        delay += 333; // 2000ms / 6 = 333ms
     });
 });
+
+function updateHistory(newNumbers) {
+    history.unshift(newNumbers);
+    if (history.length > 4) {
+        history.pop();
+    }
+    localStorage.setItem('lotto_history', JSON.stringify(history));
+    renderHistory();
+}
+
+function renderHistory() {
+    previousNumbersContainer.innerHTML = '';
+    history.forEach(numberSet => {
+        const setContainer = document.createElement('div');
+        setContainer.classList.add('previous-set');
+        numberSet.forEach(number => {
+            const ball = document.createElement('div');
+            ball.classList.add('previous-ball');
+            ball.style.backgroundColor = getColorForBall(number);
+            ball.textContent = number;
+            setContainer.appendChild(ball);
+        });
+        previousNumbersContainer.appendChild(setContainer);
+    });
+}
+
+function getColorForBall(number) {
+    const num = parseInt(number, 10);
+    if (num <= 10) return '#fbc400'; // Gold
+    if (num <= 20) return '#69c8f2'; // Blue
+    if (num <= 30) return '#ff7272'; // Red
+    if (num <= 40) return '#aaa';    // Gray
+    return '#b0d840';           // Green
+}
+
+function loadHistory() {
+    const savedHistory = localStorage.getItem('lotto_history');
+    if (savedHistory) {
+        history = JSON.parse(savedHistory);
+        renderHistory();
+    }
+}
+
+loadHistory();
