@@ -126,7 +126,7 @@ generateBtn.addEventListener('click', () => {
 
 function updateHistory(newNumbers) {
     history.unshift(newNumbers);
-    if (history.length > 4) {
+    if (history.length > 5) {
         history.pop();
     }
     localStorage.setItem('lotto_history', JSON.stringify(history));
