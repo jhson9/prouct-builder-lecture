@@ -1,3 +1,11 @@
+const colorMap = [
+    "#FFB3BA", "#FFDFBA", "#FFFFBA", "#BAFFC9", "#BAE1FF", "#E0BBE4", "#FFB3BA", "#FFDFBA", "#FFFFBA", "#BAFFC9",
+    "#BAE1FF", "#E0BBE4", "#FFB3BA", "#FFDFBA", "#FFFFBA", "#BAFFC9", "#BAE1FF", "#E0BBE4", "#FFB3BA", "#FFDFBA",
+    "#FFFFBA", "#BAFFC9", "#BAE1FF", "#E0BBE4", "#FFB3BA", "#FFDFBA", "#FFFFBA", "#BAFFC9", "#BAE1FF", "#E0BBE4",
+    "#FFB3BA", "#FFDFBA", "#FFFFBA", "#BAFFC9", "#BAE1FF", "#E0BBE4", "#FFB3BA", "#FFDFBA", "#FFFFBA", "#BAFFC9",
+    "#BAE1FF", "#E0BBE4", "#FFB3BA", "#FFDFBA", "#FFFFBA"
+];
+
 class LottoBall extends HTMLElement {
     constructor() {
         super();
@@ -36,12 +44,7 @@ class LottoBall extends HTMLElement {
     }
 
     getColor(number) {
-        const num = parseInt(number, 10);
-        if (num <= 10) return '#fbc400'; // Gold
-        if (num <= 20) return '#69c8f2'; // Blue
-        if (num <= 30) return '#ff7272'; // Red
-        if (num <= 40) return '#aaa';    // Gray
-        return '#b0d840';           // Green
+        return colorMap[parseInt(number, 10) - 1] || '#ccc';
     }
 }
 
@@ -139,12 +142,7 @@ function renderHistory() {
 }
 
 function getColorForBall(number) {
-    const num = parseInt(number, 10);
-    if (num <= 10) return '#fbc400'; // Gold
-    if (num <= 20) return '#69c8f2'; // Blue
-    if (num <= 30) return '#ff7272'; // Red
-    if (num <= 40) return '#aaa';    // Gray
-    return '#b0d840';           // Green
+    return colorMap[parseInt(number, 10) - 1] || '#ccc';
 }
 
 function loadHistory() {
