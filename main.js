@@ -109,8 +109,6 @@ generateBtn.addEventListener('click', () => {
 
     const sortedNumbers = Array.from(numbers).sort((a,b) => a - b);
     
-    updateHistory(sortedNumbers);
-
     let delay = 0;
     sortedNumbers.forEach((number, index) => {
         setTimeout(() => {
@@ -119,6 +117,7 @@ generateBtn.addEventListener('click', () => {
             lottoNumbersContainer.replaceChild(newBall, placeholderBalls[index]);
             if (index === 5) {
                 generateBtn.disabled = false;
+                updateHistory(sortedNumbers);
             }
         }, delay);
         delay += 333; // 2000ms / 6 = 333ms
